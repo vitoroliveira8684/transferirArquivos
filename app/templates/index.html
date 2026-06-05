@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Titulo</title>
+    </head>
+
+    <body>
+
+        Corpo
+
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+
+            <input type="file" name="arquivo" >
+
+            <input type="checkbox" name="rolinha" value="rola">
+            {% for arquivo in arquivos %}
+                <iframe  src="/uploads/{{arquivo}}" frameborder="0"></iframe>
+            {% endfor %}
+            
+            <button type="submit">
+                Enviar
+            </button>
+
+        </form>
+
+        Corpo
+    </body>
+
+
+
+
+</html>
+
+
+

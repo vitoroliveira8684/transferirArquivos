@@ -1,0 +1,228 @@
+PROJETO: Sistema Interno de Transferência de Arquivos via QR Code
+
+OBJETIVO:
+Criar uma solução interna para transferência de arquivos do celular para PCs da empresa utilizando navegador web, QR Code e rede local, sem depender de sistema operacional específico.
+
+==================================================
+FASE 1 — MVP (Celular -> Meu PC)
+==================================================
+
+Objetivo inicial:
+- Transferir arquivos do celular para meu computador.
+- Utilizar apenas navegador no celular.
+- Sem necessidade de app Android.
+- Sem necessidade de cabo USB.
+- Sem depender de Windows 10 ou 11 especificamente.
+
+Arquitetura inicial:
+Celular
+   ↓
+QR Code
+   ↓
+Servidor HTTP local no PC
+   ↓
+Salvar arquivos em pasta local
+
+Tecnologias escolhidas:
+- Python
+- FastAPI
+- HTML/CSS/JS simples
+- QRCode em Python
+
+Fluxo:
+1. Script Python inicia servidor local.
+2. Detecta IP da máquina.
+3. Gera QR Code com:
+   http://IP_LOCAL:8080
+4. Usuário escaneia QR Code pelo celular.
+5. Página web abre no celular.
+6. Usuário seleciona arquivos.
+7. Upload enviado ao PC.
+8. Arquivos salvos automaticamente.
+
+Tipos de arquivos esperados:
+- jpg
+- png
+- pdf
+- mp4
+- docx
+- xlsx
+- txt
+- zip
+
+Pasta inicial:
+C:\Uploads
+
+Frontend:
+- Muito simples
+- Botão selecionar arquivo
+- Botão enviar
+- Barra de progresso
+
+==================================================
+TECNOLOGIAS CONSIDERADAS
+==================================================
+
+Python:
+- Melhor equilíbrio entre simplicidade e poder.
+- Excelente para rede, HTTP, WebSocket e automação.
+- Fácil deploy e manutenção.
+
+FastAPI:
+- Muito rápido.
+- Async.
+- Excelente suporte a upload.
+- Fácil criação de APIs.
+
+HTML + JS:
+- Compatibilidade máxima.
+- Funciona em qualquer celular.
+- Evita necessidade de app.
+
+QRCode:
+- Biblioteca Python "qrcode"
+
+==================================================
+FASE 2 — MÚLTIPLAS MÁQUINAS
+==================================================
+
+Objetivo:
+Permitir escolher qual máquina receberá os arquivos.
+
+Estrutura:
+Celular
+   ↓
+Servidor central
+   ↓
+Escolha de máquina
+   ↓
+Encaminhamento do arquivo
+
+Já existem:
+- IPs das máquinas
+- nomes das máquinas
+
+Possível estrutura:
+[
+  {
+    "nome": "CPD-01",
+    "ip": "10.0.0.21"
+  },
+  {
+    "nome": "RH-02",
+    "ip": "10.0.0.35"
+  }
+]
+
+Interface futura:
+Escolha o destino:
+[ ] RH
+[ ] Financeiro
+[ ] Expedição
+[ ] CPD
+
+==================================================
+FASE 3 — SERVIDOR CENTRAL
+==================================================
+
+Objetivo:
+Centralizar uploads em um servidor interno da empresa.
+
+Estrutura:
+Celular
+   ↓
+QR Code
+   ↓
+Página web interna
+   ↓
+Servidor interno
+   ↓
+Pasta compartilhada/rede
+
+Possibilidade:
+- QR Code específico por setor.
+- QR Code específico por máquina.
+
+Exemplos:
+http://servidor/upload?destino=cpd
+http://servidor/upload?destino=rh
+
+==================================================
+SEGURANÇA
+==================================================
+
+Principais preocupações:
+- Malware
+- Upload de .exe
+- Scripts maliciosos
+- Flood de arquivos
+- Arquivos gigantes
+
+Medidas planejadas:
+1. Whitelist de extensões.
+2. Limite de tamanho de upload.
+3. Pasta isolada para uploads.
+4. Sanitização de nome de arquivo.
+5. Possível antivírus automático.
+6. Rede interna apenas.
+7. Sem exposição na internet.
+
+Extensões bloqueadas:
+- exe
+- bat
+- cmd
+- ps1
+- vbs
+- scr
+- msi
+- js
+- jar
+
+==================================================
+THIN CLIENTS
+==================================================
+
+Ainda não definido.
+Possíveis cenários:
+- Windows Embedded
+- Linux
+- Citrix
+- RDP
+- Terminal Server
+
+Provavelmente será tratado futuramente.
+
+==================================================
+ARQUITETURA IMPORTANTE
+==================================================
+
+Mesmo no MVP, estruturar sistema pensando em:
+- destino
+- usuário
+- timestamp
+- máquina
+
+Exemplo:
+{
+  "destino": "CPD-01",
+  "arquivo": "foto.jpg",
+  "usuario": "celular",
+  "timestamp": "2026-05-16"
+}
+
+==================================================
+OBJETIVO FINAL
+==================================================
+
+Criar uma solução semelhante a:
+- AirDrop corporativo
+- Nearby Share interno
+- DropBox interno simplificado
+- Compartilhamento corporativo rápido
+
+Tudo funcionando:
+- via navegador
+- multiplataforma
+- sem instalação no celular
+- independente de Windows 10/11
+- preparado para expansão futura
