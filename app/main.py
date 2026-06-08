@@ -10,6 +10,7 @@ app = FastAPI();
 
 app.include_router(files.router);
 
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 app.mount("/uploads", StaticFiles(directory="uploads"), name ="uploads")
 
 

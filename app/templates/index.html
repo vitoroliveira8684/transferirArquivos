@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 <html>
 
+    
+
     <head>
-        <title>Titulo</title>
+        <title>Upload de Arquivos</title>
+
+        <link rel="stylesheet" href="/static/css/style.css">
+        
+
     </head>
 
     <body>
+        
+        <div class="uploadBox">
+            <title>Upload de Arquivos</title>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button type="submit"  class="btnUpload">Enviar</button>
+            </form>
+        </div>
 
-        Corpo
-
-
-        <form action="/upload" method="post" enctype="multipart/form-data">
-
-            <input type="file" name="arquivo" >
-
-            <input type="checkbox" name="rolinha" value="rola">
+        <div class="cards">
             {% for arquivo in arquivos %}
-                <iframe  src="/uploads/{{arquivo}}" frameborder="0"></iframe>
-            {% endfor %}
-            
-            <button type="submit">
-                Enviar
-            </button>
 
-        </form>
 
-        Corpo
+                <div class="card">
+
+                    <div class="preview">
+                        <iframe src="/uploads/{{arquivo}}"></iframe>
+                    </div>
+
+                    <div class="filename">
+                        {{arquivo}}
+                    </div>
+
+                    <div class="actions">
+
+                        <a class="btnDownload" href="/uploads/{{arquivo}}" download>Baixar</a>
+                        <form action="/delete/{{arquivo}}" method="post">
+                            <button type="submit" class="btnDelete">Remover</button>
+                            <a class="btnDelete" href="/delete/{{arquivo}}">Remover</a>
+                        </form>
+                    </div>
+
+                </div>
+
+
+            {%  endfor %}
+        </div>
+    
+
+
     </body>
 
 
