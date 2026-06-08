@@ -31,19 +31,20 @@
                         <iframe src="/uploads/{{arquivo}}"></iframe>
                     </div>
 
-                    <div class="filename">
-                        {{arquivo}}
+                    <div class="info">
+                        <div class="filename">
+                            {{arquivo}}
+                        </div>
+
+                        <div class="actions">
+                
+                            <a class="btnDownload" href="/uploads/{{arquivo}}" download>Baixar</a>
+                            <form action="/delete/{{arquivo}}" method="post">
+                                <button type="submit" class="btnDelete">Remover</button>
+                            </form>
+                            
+                        </div>
                     </div>
-
-                    <div class="actions">
-
-                        <a class="btnDownload" href="/uploads/{{arquivo}}" download>Baixar</a>
-                        <form action="/delete/{{arquivo}}" method="post">
-                            <button type="submit" class="btnDelete">Remover</button>
-                            <a class="btnDelete" href="/delete/{{arquivo}}">Remover</a>
-                        </form>
-                    </div>
-
                 </div>
 
 
