@@ -1,64 +1,69 @@
 <!DOCTYPE html>
 <html>
 
-    
-
-    <head>
-        <title>Upload de Arquivos</title>
-
-        <link rel="stylesheet" href="/static/css/style.css">
-        
-
-    </head>
-
-    <body>
-        
-        <div class="uploadBox">
-            <title>Upload de Arquivos</title>
-            <form action="/upload" method="post" enctype="multipart/form-data">
-                <input type="file" name="file">
-                <button type="submit"  class="btnUpload">Enviar</button>
-            </form>
-        </div>
-
-        <div class="cards">
-            {% for arquivo in arquivos %}
 
 
-                <div class="card">
+<head>
+    <title>Upload de Arquivos</title>
 
-                    <div class="preview">
-                        <iframe src="/uploads/{{arquivo}}"></iframe>
-                    </div>
+    <link rel="stylesheet" href="/static/css/style.css">
 
-                    <div class="info">
-                        <div class="filename">
-                            {{arquivo}}
-                        </div>
 
-                        <div class="actions">
-                
-                            <a class="btnDownload" href="/uploads/{{arquivo}}" download>Baixar</a>
-                            <form action="/delete/{{arquivo}}" method="post">
-                                <button type="submit" class="btnDelete">Remover</button>
-                            </form>
-                            
-                        </div>
-                    </div>
+</head>
+
+<body>
+
+    <div class="header">
+
+        <h1 class="lblUploadArquivo">Upload de Arquivo</h1>
+        <img src="/static/img/atacadaoLogo.png" class="logo">
+
+
+    </div>
+    <div class="uploadBox">
+
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" class="btnInput">
+            <button type="submit" class="btnSend">Enviar</button>
+        </form>
+    </div>
+
+    <div class="cards">
+        {% for arquivo in arquivos %}
+
+
+        <div class="card">
+
+            <div class="preview">
+                <iframe src="/uploads/{{arquivo}}"></iframe>
+            </div>
+
+            <div class="info">
+                <div class="filename">
+                    {{arquivo}}
                 </div>
 
+                <div class="actions">
 
-            {%  endfor %}
+                    <a class="btnDownload" href="/uploads/{{arquivo}}" download>Baixar</a>
+                    <form action="/delete/{{arquivo}}" method="post">
+                        <button type="submit" class="btnDelete">Remover</button>
+                    </form>
+
+                </div>
+            </div>
         </div>
-    
 
 
-    </body>
+        {% endfor %}
+    </div>
+
+
+
+</body>
 
 
 
 
 </html>
-
-
-
