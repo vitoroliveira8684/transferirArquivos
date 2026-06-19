@@ -34,23 +34,16 @@
 
 
         <div class="card">
-
             <div class="preview">
-                <iframe src="/uploads/{{arquivo}}"></iframe>
+                <iframe src="/uploads/{{arquivo}}" title="Preview"></iframe>
             </div>
-
             <div class="info">
-                <div class="filename">
-                    {{arquivo}}
-                </div>
-
+                <div class="filename" title="{{arquivo}}">{{arquivo}}</div>
                 <div class="actions">
-
                     <a class="btnDownload" href="/uploads/{{arquivo}}" download>Baixar</a>
-                    <form action="/delete/{{arquivo}}" method="post">
+                    <form action="/delete/{{arquivo}}" method="post" style="margin:0;">
                         <button type="submit" class="btnDelete">Remover</button>
                     </form>
-
                 </div>
             </div>
         </div>
