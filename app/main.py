@@ -1,7 +1,7 @@
 from fastapi import FastAPI;
 from fastapi.staticfiles import StaticFiles;
 from app.routes import files, auth;
-from app.services.upload_service import create_table;
+from app.services.auth_service import create_table;
 
 import os;
 
