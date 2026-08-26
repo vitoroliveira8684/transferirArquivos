@@ -10,8 +10,9 @@ os.makedirs("uploads", exist_ok=True);
 app = FastAPI();
 create_table();
 
-app.include_router(files.router);
 app.include_router(auth.router);
+app.include_router(files.router);
+
 
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 app.mount("/uploads", StaticFiles(directory="uploads"), name ="uploads")
