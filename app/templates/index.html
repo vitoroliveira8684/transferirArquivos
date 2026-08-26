@@ -20,12 +20,13 @@
 
 
     </div>
-    <div class="uploadBox">
+    <div class="uploadBox" id="dropZone">
 
 
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" class="btnInput">
+        <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+            <input type="file" name="files" class="btnInput" id="fileInput" multiple>
             <button type="submit" class="btnSend">Enviar</button>
+            <p id="fileStatus" class="fileStatus">Ou arraste arquivos / cole (Ctrl + v) aqui</p>
         </form>
     </div>
 
@@ -52,7 +53,7 @@
         {% endfor %}
     </div>
 
-
+    <script src="/static/js/upload.js"></script>
 
 </body>
 
