@@ -49,7 +49,7 @@ def get_user_by_username(username):
     conn = get_connection();
 
     cursor = conn.execute(
-        "SELECT * FROM users WHERE username = ?"
+        "SELECT * FROM users WHERE username = ?",
         (username,)
     );
 
@@ -64,4 +64,4 @@ def verify_password(password, hash_password):
         password,
         hash_password
     );
-# Retorna True ou False.
+# Retorna True ou False.x                      
